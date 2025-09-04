@@ -47,7 +47,7 @@ docker exec -it -e PYTHONPATH=/app python_test python app/receive.py
 
 ---
 
-## Features
+## Environment Variables
 
 RABBITMQ_HOST=rabbitmq
 RABBITMQ_PORT=5672

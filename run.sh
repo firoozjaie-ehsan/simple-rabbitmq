@@ -1,12 +1,17 @@
 
 # اول send اجرا شود
+commit 2:
 docker exec -it -e PYTHONPATH=/app python_test python app/send.py
 docker exec -it -e PYTHONPATH=/app python_test python app/receive.py
+
+commit 3:
+docker exec -it -e PYTHONPATH=/app python_test python app/test_producer.py
+docker exec -it -e PYTHONPATH=/app python_test python app/worker.py
 
 
 # نمایش لیست صف ها
 docker exec -it rabbitmq_test rabbitmqctl list_queues
-
+docker exec -it rabbitmq_test rabbitmqctl list_queues messages_ready messages_unacknowledged
 
 # Different modes of running the application
 # for testing
