@@ -22,8 +22,12 @@ docker exec -it -e PYTHONPATH=/app python_test python app/emit_direct_logs.py  i
 
 commit 6 :
 docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs_topic.py "*.*.Rabbit" "lazy.#"
-docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs_topic.py "*.orange.*
+docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs_topic.py "*.orange.*"
 docker exec -it -e PYTHONPATH=/app python_test python app/emit_log_topic.py "quicke.orange.fox" 'a orange dog'
+
+commit 7 :
+docker exec -it -e PYTHONPATH=/app python_test python app/rpc_server.py
+docker exec -it -e PYTHONPATH=/app python_test python app/rpc_client.py
 
 # نمایش لیست صف ها , تبادل کننده ها
 docker exec -it rabbitmq_test rabbitmqctl list_queues
