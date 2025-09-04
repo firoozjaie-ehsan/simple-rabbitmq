@@ -13,6 +13,12 @@ docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs.py >logs_
 docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs.py
 docker exec -it -e PYTHONPATH=/app python_test python app/emit_log.py
 
+commit 5:
+# اجرای هم زمان این دو
+docker exec -it -e PYTHONPATH=/app python_test python app/reveive_direct_logs.py info warning error
+docker exec -it -e PYTHONPATH=/app python_test python app/receive_direct_logs.py error >logs_fromRabbit_direct.log
+docker exec -it -e PYTHONPATH=/app python_test python app/emit_direct_logs.py  error "error message"   # show in console
+docker exec -it -e PYTHONPATH=/app python_test python app/emit_direct_logs.py  info "info error"       # show in file and console
 
 # نمایش لیست صف ها , تبادل کننده ها
 docker exec -it rabbitmq_test rabbitmqctl list_queues
