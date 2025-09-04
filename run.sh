@@ -8,10 +8,17 @@ commit 3:
 docker exec -it -e PYTHONPATH=/app python_test python app/test_producer.py
 docker exec -it -e PYTHONPATH=/app python_test python app/worker.py
 
+commit 4:
+docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs.py >logs_fromRabbit.log               and
+docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs.py
+docker exec -it -e PYTHONPATH=/app python_test python app/emit_log.py
 
-# نمایش لیست صف ها
+
+# نمایش لیست صف ها , تبادل کننده ها
 docker exec -it rabbitmq_test rabbitmqctl list_queues
 docker exec -it rabbitmq_test rabbitmqctl list_queues messages_ready messages_unacknowledged
+docker exec -it rabbitmq_test rabbitmqctl list_exchanges
+docker exec -it rabbitmq_test rabbitmqctl list_bindings
 
 # Different modes of running the application
 # for testing
