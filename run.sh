@@ -20,6 +20,11 @@ docker exec -it -e PYTHONPATH=/app python_test python app/receive_direct_logs.py
 docker exec -it -e PYTHONPATH=/app python_test python app/emit_direct_logs.py  error "error message"   # show in console
 docker exec -it -e PYTHONPATH=/app python_test python app/emit_direct_logs.py  info "info error"       # show in file and console
 
+commit 6 :
+docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs_topic.py "*.*.Rabbit" "lazy.#"
+docker exec -it -e PYTHONPATH=/app python_test python app/receive_logs_topic.py "*.orange.*
+docker exec -it -e PYTHONPATH=/app python_test python app/emit_log_topic.py "quicke.orange.fox" 'a orange dog'
+
 # نمایش لیست صف ها , تبادل کننده ها
 docker exec -it rabbitmq_test rabbitmqctl list_queues
 docker exec -it rabbitmq_test rabbitmqctl list_queues messages_ready messages_unacknowledged
